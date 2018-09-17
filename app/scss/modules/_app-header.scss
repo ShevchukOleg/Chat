@@ -1,0 +1,50 @@
+.app-header {
+	@include d-flex($align-items: center, $justify-content: space-between);
+	padding:  14px var(--side-indent);
+	background-color: var(--primary);
+	color: var(--white);
+	box-shadow: 0 0 30px 5px rgba(52, 152, 219, 0.4);
+
+
+	.toggle-button{
+		cursor: pointer;
+		
+		&-element {
+			display: block;
+			width: 25px;
+			height: 3px;
+			background-color: var(--white);
+			transition: 0.2s;
+			&:nth-of-type(2){
+				width: 18px;
+				margin-top: 5px;
+				margin-bottom: 5px;
+			}
+		}
+		&:hover {
+			.toggle-button-element{
+				background-color: var(--text-color-900);
+
+			}
+		}
+	}
+	.user-info{
+		@include d-flex($align-items: center);
+	}
+	.acc-info{
+		@include d-flex($align-items: center);
+		.acc-status {
+			@include d-flex($align-items: center, $justify-content: space-between);
+			color: var(--text-color-700);
+			letter-spacing: 0.1em;
+			line-height: 15px;
+		}
+		.avatar{
+			margin-right: 26px;
+		}
+	}
+	.search{
+		font-size: 20px;
+		margin-right: 25px;
+	}
+}

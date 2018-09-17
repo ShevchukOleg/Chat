@@ -1,0 +1,30 @@
+
+:root{
+	
+
+// Colors
+	--primary: #3498db;
+	--white: #fff;
+	--light-blue: #d6e3ec;
+	--grey: #edf0f2;
+	--blue-1: #3399cc;
+	--light-blue: #d4e1ea;
+	--cian: #51dacf;
+	--app-background: #f5f6f8;
+	--text-color-100: #f6fafe;
+	--text-color-200: #8ea1b4;
+	--text-color-300:#c9d6df;
+	--text-color-700:#2775a9;
+	--text-color-900: #16315c;
+	// Chat
+	--blue:#3598db;
+
+// Indents
+	--side-indent: 15px;
+}
+
+@media (min-width: 576px) {
+	:root{
+		--side-indent:52px;
+	}
+}

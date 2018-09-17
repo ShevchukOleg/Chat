@@ -1,0 +1,73 @@
+.app-main {
+	@include d-flex($justify-content: space-between);
+	padding: 20px var(--side-indent);
+}
+
+.sidebar {
+	background-color: var(--white);
+	border-radius: 2px;
+	padding: 12px 15px;
+	flex-basis: 30%;
+	box-shadow: 0 0 25px 0 rgba(53, 152, 219, 0.1);
+		&-header{
+			@include d-flex($align-items: center, $justify-content: space-between);
+			padding-bottom: 13px;
+			margin-bottom: 15px;
+			border-bottom: 1px solid var(--grey);
+		}
+		.users-listing{
+			list-type: none;
+			.user{
+				@include d-flex($align-items: center, $justify-content: start);
+				margin-bottom: 28px;
+			}
+
+			.user-img-position{
+				position: relative;
+				.count{
+					position: absolute;
+					top: -5px;
+					right:-3px;
+					border-radius: 50%;
+					box-shadow: 0 0 10px 2 rgba(53, 152, 219, 0.5);
+					width: 20px;
+					height: 20px;
+					text-align: center;
+					line-height: 20px;
+					background-color: var(--blue-1);
+					font-weight: bold;
+					color: var(--white);
+				}
+			}
+				.user-name{ 
+					margin:0 12px;
+					.name{
+						    margin-bottom: 3px;
+					}
+				}
+		}
+}
+
+.chat {
+	flex-basis: 68%;
+}
+
+.user-status{
+	text-align: right;
+	margin: 0 1px 0 auto;
+}
+
+
+.time{
+	color: var(--text-color-300);
+	display: block;
+	white-space: nowrap;
+}
+
+.last-massege {
+	display: inline-block;
+	max-width: 125px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
