@@ -15,6 +15,16 @@ body{
 	color: var(--text-color-200);
 }
 
+h2, .h2 {
+	color: var(--text-color-900);
+	font-stretch: semi-condensed;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.025em;
+	line-height: 18px;
+
+}
+
 h3, .h3 {
 	font-size: 16px;
 	font-weight: 700;
@@ -60,12 +70,8 @@ h4, .h4{
 		letter-spacing: 0;
 	}
 	.status {
-	display: inline-block;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background-color: var(--cian);
-	box-shadow: 0 2px 4px 0 rgba(81, 218, 207, 0.1);
+	@include status-structyre;
+	@include status-online;
 	}
 	.is-typing {
 	display: none;
@@ -82,12 +88,8 @@ h4, .h4{
 		letter-spacing: 0;
 	}
 	.status {
-	display: inline-block;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background-color: var(--cian);
-	box-shadow: 0 2px 4px 0 rgba(81, 218, 207, 0.1);
+	@include status-structyre;
+	@include status-online;
 	margin: auto 0 9px 0;
 	}
 	.last-massege, .time {
@@ -105,12 +107,8 @@ h4, .h4{
 		letter-spacing: 0;
 	}
 	.status {
-	display: inline-block;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background-color: var(--light-blue);
-	box-shadow: 0 2px 4px 0 rgba(81, 218, 207, 0.1);
+	@include status-structyre;
+	@include status-off-line;
 	}
 	.is-typing {
 	display: none;
@@ -131,12 +129,8 @@ h4, .h4{
 		color:var(--text-color-300);
 	}
 	.status {
-	display: inline-block;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background-color: var(--light-blue);
-	box-shadow: 0 2px 4px 0 rgba(81, 218, 207, 0.1);
+	@include status-structyre;
+	@include status-off-line;
 	}
 	.is-typing {
 	display: none;
@@ -156,12 +150,8 @@ h4, .h4{
 		color:var(--text-color-300);
 	}
 	.status {
-	display: inline-block;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background-color: var(--cian);
-	box-shadow: 0 2px 4px 0 rgba(81, 218, 207, 0.1);
+	@include status-structyre;
+	@include status-online;
 	}
 	.is-typing {
 	display: none;
