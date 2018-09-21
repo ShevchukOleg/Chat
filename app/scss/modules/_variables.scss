@@ -1,5 +1,5 @@
 
-:root{
+body{
 	
 
 // Colors
@@ -25,7 +25,27 @@
 }
 
 @media (min-width: 576px) {
-	:root{
+	body{
 		--side-indent:52px;
 	}
+}
+
+body.night-mode{
+	// Colors
+	--primary: #2f190a;
+	--white: #d4cac7;
+	--light-blue: #d6e3ec;
+	--grey: #edf0f2;
+	--blue-1: #9c9090;
+	--light-blue: #c5b6ab;
+	--light-blue-1: #dbeaf4;
+	--cian: #359a82;
+	--app-background: #aca1a1;
+	--text-color-100: #f6fafe;
+	--text-color-200: #69656f;
+	--text-color-300: #72645a;
+	--text-color-700: #f7efed;
+	--text-color-900: #ae6737;
+	// Chat
+	--blue:#45382b;
 }

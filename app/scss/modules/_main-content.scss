@@ -35,7 +35,7 @@
 			list-style: none;
 			overflow-y: auto;
 			overflow-x: hidden;
-			max-height: 600px;
+			max-height: 630px;
 			.user{
 				@include d-flex($align-items: center, $justify-content: start);
 				
@@ -86,7 +86,7 @@
 	&-header {
 		@include d-flex($flex-d: column, $align-items: center, $justify-content: start);
 		border-bottom: 1px solid var(--light-blue-1);
-		padding: 21px 7px 21px 0;
+		padding: 15px 7px 20px 0;
 		text-align: center;
 		@media(min-width: 768px) {
 			@include d-flex($flex-d: row, $align-items: center, $justify-content: start);
@@ -123,7 +123,7 @@
 		overflow-x: hidden;
 		margin-bottom: 5px;
 		@media(min-width: 768px){
-			max-height: 515px;
+			max-height: 500px;
 		}
 		[class*="-message"]{
 			@include d-flex($align-items: center);
@@ -190,12 +190,13 @@
 	}
 	&-footer{
 		margin-top: auto;
+		margin-bottom: 10px;
 		input[type="text"]{
 				box-sizing: border-box;
 				width: 100%;
 				display: block;
-				padding: 26px 120px 26px 20px;
-				border-radius: 4px;
+				padding: 22px 120px 22px 20px;
+				border-radius: 5px;
 				border: 1px solid transparent;
 				color: var(--text-color-200);
 				&::-webkit-input-placeholder, &::-moz-placeholder, &:-ms-input-placeholder{
@@ -207,6 +208,7 @@
 		form{
 			position: relative;
 			box-shadow: 0 0 8px 5px rgba(53, 152, 219, 0.05);
+			margin-bottom: 20px;
 
 			
 
@@ -230,6 +232,7 @@
 				line-height: 42px;
 				padding: 0;
 				cursor: pointer;
+				box-shadow: 0 3px 15px 0 rgba(53, 152, 219, 0.3);
 				}
 
 			.input-lable{
