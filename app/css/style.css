@@ -2743,7 +2743,7 @@ h4, .h4 {
 
 .sidebar {
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   top: 69px;
   bottom: 0;
   left: 0;
@@ -2776,6 +2776,7 @@ h4, .h4 {
     padding-bottom: 13px;
     border-bottom: 1px solid var(--grey); }
   .sidebar .users-listing {
+    z-index: 3;
     list-style: none;
     overflow-y: auto;
     overflow-x: hidden;
