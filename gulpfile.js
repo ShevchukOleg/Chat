@@ -1,100 +1,83 @@
-var gulp = require('gulp'),
-	sass = require('gulp-sass'),
-	browserSync = require('browser-sync'),
-	autoprefixer = require('gulp-autoprefixer'),
-	sourcemaps = require('gulp-sourcemaps'),
-	notify = require('gulp-notify'),
-	plumber = require('gulp-plumber'),
-	   del = require('del'); 
+const gulp = require('gulp'),
+      sass = require('gulp-sass'),
+      concat = require('gulp-concat'),
+      sourcemaps = require('gulp-sourcemaps'),
+      watch = require('gulp-watch'),
+      autoprefixer = require('gulp-autoprefixer'),
+      cleanCSS = require('gulp-clean-css'),
+      browserSync = require('browser-sync').create(),
+      babel = require('gulp-babel'),
+      uglify = require('gulp-uglify'),
+      del = require('del');
 
-	var onError = function(error){
-		return error.messageOriginal ?
-		"File: " + error.file +
-		"\rAt: " + error.line + error.column +
-		"\r" + error.messageOriginal :
-		error;
-	}
+
 
 gulp.task('sass', function(){
-	return gulp.src('app/scss/*.scss')
-	.pipe(sourcemaps.init())
-	.pipe(plumber({
-		errorHandler : notify.onError({
-			title: 'SCSS error',
-			message: onError
-		})
-	}))
-	.pipe(sass())
-	.pipe(autoprefixer({
-		browsers: ['last 2 versions'],
-		cascade: false
-	}))
-	.pipe(sourcemaps.write('.'))
-	.pipe(plumber.stop())
-    .pipe(gulp.dest('app/css'))
-    .pipe(browserSync.reload({stream: true}))
-    .pipe(notify({message:'SCSS complete', onLast: true}))
-});
+  return gulp.src('./src/scss/**/*.scss')
+  .pipe(sourcemaps.init())
+  .pipe(sass().on('error', sass.logError))
+  .pipe(autoprefixer({
+    cascade: false
+    })
+  )
+  .pipe(cleanCSS({level: 2}))
+  .pipe(sourcemaps.write('./'))
+  .pipe(gulp.dest('./src/css/'))
+  .pipe(browserSync.stream());
+})
 
-gulp.task('browser-sync', function(){
-	browserSync({
+gulp.task('scripts', function(){
+  return gulp.src(['./src/js/jscomponents/My-script.js','./src/js/jscomponents/uncompressed_development_jQuery_3.3.1.js', './src/js/jscomponents/bootstrap.min.js'])
+  .pipe(concat('resultScript.js'))
+  .pipe(gulp.dest('./src/js'))
+  .pipe(browserSync.stream());
+  });
+
+
+
+function clean(){
+    return del(['docs/*']);
+}
+
+gulp.task('clean', clean);
+
+gulp.task('watch', function(){
+  browserSync.init({
 		server:{
-			baseDir: 'app'
+			baseDir: './src'
 		}
-	});
-});
+  });
+  gulp.watch('./src/scss/**/*.scss', gulp.series('sass'));
+  gulp.watch('./src/js/jscomponents/**/*.js', gulp.series('scripts'));
+  gulp.watch('./src/*.html').on('change', browserSync.reload);
+})
 
-gulp.task('watch',['browser-sync', 'sass'], function(){
-	gulp.watch('app/scss/**/*.scss', ['sass'])
-	gulp.watch('app/*.html', browserSync.reload);
-	gulp.watch('app/*.js', browserSync.reload);
-});
+gulp.task('moveHTML', function(){
+  return gulp.src(['src/*.html'])
+    .pipe(gulp.dest('./docs'));
+  });
 
+gulp.task('moveCSS', function(){
+  return gulp.src(['src/css/style.css'])
+    .pipe(gulp.dest('./docs/css'));
+  });
 
-gulp.task('default', ['watch']);
+gulp.task('moveJS', function(){
+  return gulp.src(['src/js/resultScript.js'])
+    .pipe(gulp.dest('./docs/js'));
+  });
 
+gulp.task('moveFonts', function(){
+  return gulp.src(['src/fonts/**/*'])
+    .pipe(gulp.dest('./docs/fonts'));
+  });
 
-gulp.task('clean', function() {
-    return del.sync('dist'); // Удаляем папку dist перед сборкой
-});
+gulp.task('moveImages', function(){
+  return gulp.src(['src/images/**/*'])
+    .pipe(gulp.dest('./docs/images'));
+  });
 
-gulp.task('build', ['clean', 'sass', 'scripts'], function() {
-
-    var buildCss = gulp.src([ // Переносим библиотеки в продакшен
-        'app/css/main.css',
-        'app/css/libs.min.css'
-        ])
-    .pipe(gulp.dest('dist/css'))
-
-    var buildFonts = gulp.src('app/fonts/**/*') // Переносим шрифты в продакшен
-    .pipe(gulp.dest('dist/fonts'))
-
-    var buildJs = gulp.src('app/js/**/*') // Переносим скрипты в продакшен
-    .pipe(gulp.dest('dist/js'))
-
-    var buildHtml = gulp.src('app/*.html') // Переносим HTML в продакшен
-    .pipe(gulp.dest('dist'));
-
-});
-
-gulp.task('build', ['sass', 'scripts'], function() {
-
-    var buildCss = gulp.src([ // Переносим CSS стили в продакшен
-        'app/css/main.css',
-        'app/css/libs.min.css'
-        ])
-    .pipe(gulp.dest('dist/css'))
-
-    var buildFonts = gulp.src('app/fonts/**/*') // Переносим шрифты в продакшен
-    .pipe(gulp.dest('dist/fonts'))
-
-    var buildJs = gulp.src('app/js/**/*') // Переносим скрипты в продакшен
-    .pipe(gulp.dest('dist/js'))
-
-    var buildHtml = gulp.src('app/*.html') // Переносим HTML в продакшен
-    .pipe(gulp.dest('dist'));
-
-});
-
-
-
+gulp.task(
+  'build',
+  gulp.series('clean', gulp.parallel('sass', 'scripts'),
+  gulp.parallel('moveHTML', 'moveCSS', 'moveJS', 'moveFonts', 'moveImages')));

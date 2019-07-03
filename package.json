@@ -1,31 +1,36 @@
 {
-  "name": "begin-sass",
+  "name": "gulp_4",
   "version": "1.0.0",
-  "description": "my first gulp",
+  "description": "Update Gulp",
   "main": "index.js",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "through2": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "browser-sync": "^2.26.7",
+    "del": "^5.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^5.0.1",
+    "node-sass": "^4.12.0"
+  },
+  "browserslist": [
+    "last 1 version",
+    "> 0.1%",
+    "maintained node versions",
+    "not dead"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MuscularShark/Begin-Sass.git"
-  },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MuscularShark/Begin-Sass/issues"
-  },
-  "homepage": "https://github.com/MuscularShark/Begin-Sass#readme",
-  "devDependencies": {
-    "browser-sync": "^2.24.6",
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^5.0.0",
-    "gulp-notify": "^3.2.0",
-    "gulp-plumber": "^1.2.0",
-    "gulp-sass": "^4.0.1"
-  },
-  "dependencies": {
-    "gulp-sourcemaps": "^2.6.4"
-  }
+  "license": "ISC"
 }
