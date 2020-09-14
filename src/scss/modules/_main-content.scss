@@ -39,9 +39,8 @@
 			max-height: 630px;
 			.user{
 				@include d-flex($align-items: center, $justify-content: start);
-				
 				margin:0 -15px;
-				padding: 13px 15px;
+				padding: 13px 18px 13px 15px;
 				transition:0.3s;
 				cursor: pointer;
 				&.open,
@@ -69,7 +68,7 @@
 				}
 			}
 
-				.user-name{ 
+				.user-name{
 					margin:0 12px;
 					.name{
 						    margin-bottom: 3px;
@@ -211,7 +210,7 @@
 			box-shadow: 0 0 8px 5px rgba(53, 152, 219, 0.05);
 			margin-bottom: 20px;
 
-			
+
 
 			input[type="file"]{
 			display: none;
@@ -243,7 +242,7 @@
 				font-size: 20px;
 				cursor: pointer;
 				color: var(--light-blue);
-				transform: translateY(-50%) rotate(43deg); 
+				transform: translateY(-50%) rotate(43deg);
 				}
 		}
 	}
